@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "tittle": "Alien",
+    "year": "1979",
+    "director": "Ridley Scott",
+    "rating": "8.5"
+  },
+  {
+    "id": "2",
+    "title": "The Dark Knight",
+    "director": "Cristopher",
+    "year": "1986",
+    "rating": "8.5"
+  }
+]
