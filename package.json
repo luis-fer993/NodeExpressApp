@@ -1,7 +1,7 @@
 {
-  "name": "nodeexpressapp",
+  "name": "nodeexpressapp And Api Rest Mysql",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project to learn node and express, include a simple web app, and a Api Rest with Mysql",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
