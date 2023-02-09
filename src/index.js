@@ -1,18 +1,22 @@
-const { application } = require("express");
+//JS
 const express = require("express");
-const { Server } = require("http");
-const { hostname } = require("os");
 const morgan = require("morgan");
 //import  express  from 'express';
 const app = express();
 const path = require("path");
 
+const { PORT } = require("./config");
+
+
+
 //settings
-app.set("port", process.env.PORT || 3000); 
 app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
-app.set('json spaces',2)
+app.set('json spaces', 2)
+
+//app.set('port', process.env.PORT || 3000); //otra forma de configurar el puerto del servidor
+//app.get('port'); //otra forma de obtener el puerto del servidor
 
 //middlewares
 // middlewares son funciones que se ejecutan antes de que lleguen a las rutas del servidor
@@ -40,14 +44,22 @@ app.use(express.json());
 
 //routes
 app.use(require("./routes/index")); //importa el archivo index.js de la carpeta routes y ejecuta las rutas del servidor
+
+
+
 app.use("/api/movies",require("./routes/apiRoute")); //api del servidor 
-app.use("/api/users",require("./routes/users")); //api de usuarios desde otro servidor 
+app.use("/api/users", require("./routes/users")); //api de usuarios desde otro servidor 
+app.use('/api/mysql', require('./routes/mysql.routes')); 
+app.use((req, res, next) => {   
+    res.status(404).render("404.html", { req: req.url });
+});
+
 
 //static files
 app.use(express.static(path.join(__dirname, "public")));
 
 //listen the server
-app.listen(app.get("port"), () => {
-  console.log(`server on http://localhost:${app.get("port")}`);
+app.listen(PORT, () => {
+  console.log(`server on http://localhost:${PORT}`);
 });
 
