@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+*.git*
+.gitignore
+*.md 
+Dockerfile 
+
+#comment -- del all begin with .
+.*
+# exeption !nameFile

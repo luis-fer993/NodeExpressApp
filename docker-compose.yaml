@@ -1,0 +1,19 @@
+version: '1'
+services:
+  app:
+    image: node:18
+    container_name: appnode1
+    restart: always
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app
+    #volumes:
+    #  - ./appnode:/usr/src/app
+    #environment:
+       
+  mysql:
+    image: docker.io/library/mysql
+    container_name: database
+    restart: always
+    ports:
+      - 3306:3306

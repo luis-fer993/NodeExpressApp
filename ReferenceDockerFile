@@ -1,0 +1,29 @@
+
+
+#comment 
+#run commands local machine 
+
+FROM ubuntu
+RUN echo info
+
+#directives 
+#directive=value
+
+#environtment replacement ####
+ENV VAR=/dirname/
+# ${VAR}
+# $VAR
+WORKDIR ${VAR} 
+ADD . $VAR 
+#######
+
+#FROM [--platform=<platform>] <image>[@<digest>] [AS <name>]
+#RUN ["executable", "param1", "param2"]
+#EXPOSE <port> [<port>/<protocol>...]
+
+EXPOSE 80/tcp
+EXPOSE 80/udp
+
+#ADD [--chown=<user>:<group>] [--chmod=<perms>] [--checksum=<checksum>] <src>... <dest>
+#ADD [--chown=<user>:<group>] [--chmod=<perms>] ["<src>",... "<dest>"]
+#ENTRYPOINT ["executable", "param1", "param2"]
