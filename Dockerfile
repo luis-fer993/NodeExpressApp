@@ -1,5 +1,4 @@
 FROM node:18
-FROM mysql
 # Create app directory
 WORKDIR /usr/src/app
 
