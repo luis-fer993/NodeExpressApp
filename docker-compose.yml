@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+       
+  mysqldb:
+    image: docker.io/library/mysql
+    container_name: mysqldb
+    env_file:
+      - ./.env
+    environment:
+      - MYSQL_USER=$DB_USERNAME
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_DATABASE
+    ports:
+      - $MYSQLDB_PORT_LOCAL:$MYSQLDB_PORT
+
+  app:
+    build: .
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+    ports:
+    - "$PORT:$PORT"
+    #working_dir: /usr/src/app
+    #volumes:
+    #  - ./appnode:/usr/src/app
+    #environment:

@@ -12,5 +12,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 3000
+#EXPOSE 3000
+
+#RUN npm run migrate
 CMD [ "npm", "run", "dev" ]
